@@ -19,10 +19,30 @@ class LabReportsController < ApplicationController
       render :new, flash: { alert: 'Something went wrong' }
     end
   end
+
+  def update
+    lab_report = @lab_reports.find_by(id: params[:id])
+
+    if lab_report
+      lab_report.update(update_params)
+
+      redirect_to lab_reports_url, flash: { success: 'Report was updated' }
+    else
+      render :new, flash: { alert: 'Something went wrong' }
+    end
+  end
   
   private
 
-  def lab_report_params
+  def set_collection
+    @lab_reports = LabReport.all
+  end
+
+  def update_params
+    params.permit(:grade)
+  end
+
+    def lab_report_params
     params.permit(:title, :description, :user_id).permit!
   end
 end

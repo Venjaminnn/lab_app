@@ -1,0 +1,18 @@
+<body class="update">
+
+<h1>Update</h1>
+
+    <div class="form lab_reports">
+        <%= form_with url: lab_reports_url do |f| %>
+            <header>Title</header>
+          <%= f.text_field :title, placeholder: "Title" %><br>
+            <header>Description</header>
+          <%= f.text_field :description, placeholder: "Description" %><br>
+          <%= f.collection_select :user_id, User.all, :id, :email, prompt: 'Choose user' %><br>
+          
+          <div class="actions">
+          <%= f.submit 'Save' %>
+          </div>
+        <% end %>
+    </div>
+</body>
