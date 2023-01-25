@@ -6,6 +6,10 @@ class LabReportsController < ApplicationController
   def new
   end
 
+  def index
+    @lab_reports = LabReport.all.includes(:user)
+  end
+
   def create
     lab_report = LabReport.create(lab_report_params)
 
