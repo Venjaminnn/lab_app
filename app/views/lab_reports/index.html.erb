@@ -1,0 +1,33 @@
+<body class="index">
+
+<p id='notice'><%= notice %></p>
+
+<h1>Lab reports</h1>
+
+<div class="form lab_reports">
+<table>
+  <tbody>
+    <tr>
+     <td class='add_button'>
+        <%= button_to 'Add report', new_lab_report_path, method: :get %>
+     </td>
+    </tr>
+    <% @lab_reports.each do |lab_report| %>
+      <tr>
+        <td class='title'><%= lab_report.title %></td>
+      </tr>
+        <tr>
+        <td class='user'><%= "User: #{lab_report.user.first_name} #{lab_report.user.last_name} #{lab_report.user.email}" %></td>
+        <tr>
+        <td class='description'><%= lab_report.description%></td>
+        </tr>
+        <tr>
+        <td class='mark_button'><%= lab_report.grade ? lab_report.grade : button_to('Add mark', lab_report_path(lab_report), method: :get) %></td>
+        <td class='remove_button'><%= button_to 'Remove', lab_report_path(lab_report), method: :delete %></td>
+        </tr>
+      </tr>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+</body>

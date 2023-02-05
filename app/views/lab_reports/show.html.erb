@@ -1,0 +1,12 @@
+<body class="show">
+    <div class="form lab_reports">
+        <%= form_with url: lab_report_url, method: :patch do |f| %>
+            <header>Mark</header>
+          <%= f.text_field :grade, placeholder: "Mark" %><br>
+
+          <div class="actions">
+          <%= f.submit 'Save' %>
+          </div>
+        <% end %>
+    </div>
+</body>
